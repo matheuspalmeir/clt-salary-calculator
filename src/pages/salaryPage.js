@@ -11,6 +11,10 @@ const SalaryPage = (props) => {
   const [baseIrpfValue, setBaseIrpfValue] = useState("0");
   const [discountIrpfValue, setDiscountIrpfValue] = useState("0");
   const [salaryLiquidValue, setSalaryLiquidValue] = useState("0");
+  const [percentageBarSalary, setPercentageBarSalary] = useState(100);
+  const [percentageBarDiscontInss, setPercentageBarDiscountInss] = useState(0);
+  const [percentageBarDiscountIrpf, setPercentageBarDiscountIrpf] = useState(0);
+  const [percentageBarLiquidSalary, setPercentageBarLiquidSalary] = useState(0);
 
   const handleSalaryValueChange = (event) => {
     const value = event.target.value;
@@ -22,12 +26,39 @@ const SalaryPage = (props) => {
       netSalary,
     } = calculateSalaryFrom(value);
 
+    calculatePorcentageBar(
+      value,
+      baseINSS,
+      discountINSS,
+      baseIRPF,
+      discountIRPF,
+      netSalary
+    );
+
     setSalaryValue(value);
     setBaseInssValue(baseINSS);
     setInssValue(discountINSS);
     setBaseIrpfValue(baseIRPF);
     setDiscountIrpfValue(discountIRPF);
     setSalaryLiquidValue(netSalary);
+  };
+
+  const calculatePorcentageBar = (
+    salary,
+    baseINSS,
+    discountInss,
+    baseIRPF,
+    discountIrpf,
+    liquid
+  ) => {
+    const barDiscountInss = (discountInss * 100) / baseINSS;
+    const barDiscountIrpf = (discountIrpf * 100) / baseIRPF;
+    const barLiquidSalary = (liquid * 100) / salary;
+
+    setPercentageBarDiscountInss(barDiscountInss);
+    setPercentageBarDiscountIrpf(barDiscountIrpf);
+    setPercentageBarLiquidSalary(barLiquidSalary);
+    setPercentageBarSalary(0);
   };
 
   return (
@@ -91,9 +122,10 @@ const SalaryPage = (props) => {
         />
       </div>
       <div className="containerBar">
-        <Bar value={25} color="#28a745" />
-        <Bar value={25} color="#dc3545" />
-        <Bar value={25} color="#ffc107" />
+        <Bar value={percentageBarSalary} color="#17a2b8" />
+        <Bar value={percentageBarLiquidSalary} color="#28a745" />
+        <Bar value={percentageBarDiscontInss} color="#dc3545" />
+        <Bar value={percentageBarDiscountIrpf} color="#ffc107" />
       </div>
     </div>
   );
