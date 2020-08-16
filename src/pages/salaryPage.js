@@ -99,16 +99,9 @@ const SalaryPage = (props) => {
         <TextInput
           style={{ color: "#ffc107", fontWeight: "bold" }}
           disabled
-          id="irpf"
-          label="IRPF"
-          value={`${discountIrpfValue}`}
-        />
-        <TextInput
-          disabled
           id="descontoIRPF"
-          type="number"
           label="Desconto IRPF"
-          value={`${inssValue}`}
+          value={`${discountIrpfValue}`}
         />
       </div>
       <div className="salaryLiquidWrapper">
