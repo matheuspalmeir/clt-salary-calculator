@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Bar from "../components/bar/bar";
-import { TextInput, Textarea } from "react-materialize";
+import { TextInput } from "react-materialize";
 import { calculateSalaryFrom } from "../helpers/salary";
 import "./style.css";
 
