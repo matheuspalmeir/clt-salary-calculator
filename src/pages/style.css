@@ -1,0 +1,35 @@
+.salaryContainer {
+  width: 70%;
+}
+
+.salaryInputWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.readOnlyInputsWrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.titleWrapper {
+  text-align: center;
+  padding: 20px;
+  font-size: 25pt;
+}
+
+.salaryLiquidWrapper {
+  width: 300px;
+}
+
+.containerBar {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
